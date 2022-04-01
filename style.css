@@ -11,6 +11,23 @@ body{
     background-image: linear-gradient(to right, #16d7e9, #00b8fc, #0094ff, #0068ff, #1b12eb);
 }
 
+#qr_text{
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    /* Elle fait 3px, elle est solide lais sa border est transparent */
+    border: 3px solid rgb(101, 138, 163);
+    transition: 0.3s;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color1);
+    /* Les trois lignes qui suivent sont trées pratiques car la largeur de base est de 35%, *
+    * mais lorsqu on va agrandire l ecran la largeur ne doit pas depasser 300px, et lorsqu on *
+    * va retrecir l ecran la largeur ne doit pas etre plus grand que 180px */
+    width: 90%;
+
+}
+
 button{
     border-radius: 5px;
     background-color: rgb(101, 138, 163);
@@ -59,4 +76,20 @@ input{
 #texte{
     display: flex;
     flex-direction: row;
+}
+
+button{
+    cursor: pointer;
+    background: rgba(168, 224, 244, 0.338);
+    border: none;
+    font-size: 1.3rem;
+    color: #000d50;
+    padding: 10px 20px;
+    border-radius: 150px;
+    /* Le "auto" veut dire qu il prend autant a gauche qu a droite */
+    margin: 0 auto;
+    /* Pour faire passer le type du boutton de inline-block a block ainsi le boutton prend toute la largeur *
+    * c'est pour ça que souvent on arrive pas a centrer car nos elements ne sont pas en block */
+    display: block;
+    transition: 0.3s;
 }
