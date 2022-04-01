@@ -17,7 +17,17 @@
 <body>
     <section>
         <h1>Entrez un texte/lien</h1>
-        <input type="text" id="qr_text" onchange="generateur()">
+        <input type="text" id="qr_text">
+
+        <div id="texte">
+            <div>
+            <button id="click" onclick="generateur(this)">valider</button>
+            </div>
+            <div>
+            <button id="click2" onclick="effacer(this)">Effacer</button>
+            </div>
+        </div>
+
         <div id="qr_code"></div>
 
         <div id="boutons">
@@ -40,7 +50,11 @@
         let img;
 
 
-        function generateur(){
+        function generateur(x){
+            let z = x.id
+            console.log(z);
+
+            if(z=="click"){
             //alert("okk")
             let qrcode = document.querySelector("#qr_code");
             let telecharger = document.querySelector("#telecharger");
@@ -60,6 +74,8 @@
             telecharger.download = "qrcode.png"
             
         }
+    }
+
         function magic(x){
             let a = x.id;
             //console.log(a);
@@ -80,6 +96,15 @@
                 }catch(err){
                     alert(err);
                 }
+            }
+        }
+
+        function effacer(m){
+            let n = m.id;
+            console.log(n);
+
+            if(n=="click2"){
+                let o = document.getElementById("qr_text").value=""
             }
         }
     </script>
