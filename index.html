@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de QR</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='./pdfmake-master/build/pdfmake.min.js'></script>
+    <script src='./pdfmake-master/build/vfs_fonts.js'></script>
+</head>
+
+
+
+
+
+<body>
+    <section>
+        <h1>Entrez un texte/lien</h1>
+        <input type="text" id="qr_text" onchange="generateur()">
+        <div id="qr_code"></div>
+
+        <div id="boutons">
+            <div>
+                <button id="clic" onclick="magic(this)">Format PDF</button>
+            </div>
+            <div>
+                <a id="telecharger"></a>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="qrcode.min.js"></script>
+    <script>
+        //let pdfMake;
+        let docDefinition;
+        let qr_text = document.querySelector("#qr_text") 
+        let clic = document.querySelector("#clic")
+        let img;
+
+
+        function generateur(){
+            //alert("okk")
+            let qrcode = document.querySelector("#qr_code");
+            let telecharger = document.querySelector("#telecharger");
+            qrcode.style = "display: flex";
+            clic.style = "display: block"
+            qrcode.innerHTML = ""
+            new QRCode(qrcode ,qr_text.value);
+            let img_border = document.querySelector("img");
+            img_border.style = "border: 5px solid black;"
+            setTimeout(getTelecharger, 10);
+            
+        }
+        function getTelecharger(){
+            img = document.getElementsByTagName("img")[0].src;
+            telecharger.innerHTML="Format PNG"
+            telecharger.href = img
+            telecharger.download = "qrcode.png"
+            
+        }
+        function magic(x){
+            let a = x.id;
+            //console.log(a);
+
+            if(a=="clic"){
+
+                docDefinition = {
+                    content:[
+                        { text: 'La page PDF sera stylisée lorsque j\'aurai le temps de m\'y pencher dessus.'},
+                        { image: img }
+                ]
+                }
+                console.log(docDefinition);
+
+                try{
+                pdfMake.createPdf(docDefinition).open();
+                pdfMake.createPdf(docDefinition).print();
+                }catch(err){
+                    alert(err);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

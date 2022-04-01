@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 125vh;
+    background-image: linear-gradient(to right, #16d7e9, #00b8fc, #0094ff, #0068ff, #1b12eb);
+}
+
+button{
+    border-radius: 5px;
+    background-color: rgb(101, 138, 163);
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2%;
+    background-color: white;
+    border-radius: 15px;
+}
+
+input{
+    width: 95%;
+    margin: 10% 0% 10% 0%;
+    padding: 2.5% 0% 2.5% 0%;
+}
+
+#qr_code{
+    padding: 30px;
+    width: fit-content;
+    /*background-color: darkgray;
+    display: none;*/
+}
+
+#clic{
+    display: none;
+}
+
+#boutons{
+    display: flex;
+    flex-direction: column;
+}
+    #boutons>div{
+        text-align: center;
+        padding: 2.5% 0% 2.5% 0%;
+    }
+    #boutons>div:first-child{
+        display: flex;
+        justify-content: center;
+    }
